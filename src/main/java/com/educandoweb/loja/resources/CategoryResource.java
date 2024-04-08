@@ -9,25 +9,26 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.educandoweb.loja.entities.User;
-import com.educandoweb.loja.services.UserService;
+import com.educandoweb.loja.entities.Category;
+import com.educandoweb.loja.entities.Order;
+import com.educandoweb.loja.services.CategoryService;
 
 @RestController
-@RequestMapping(value = "/user")
-public class UserResource {
+@RequestMapping(value = "/category")
+public class CategoryResource {
 	
 	@Autowired
-	private UserService service;
+	private CategoryService service;
 	
 	@GetMapping
-	public ResponseEntity<List<User>> findAll() {
-		List<User> list = service.findAll();	
+	public ResponseEntity<List<Category>> findAll() {
+		List<Category> list = service.findAll();	
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<User> findById(@PathVariable Long id) {
-		User user = service.findById(id);
-		return ResponseEntity.ok().body(user);
+	public ResponseEntity<Category> findById(@PathVariable Long id) {
+		Category category = service.findById(id);
+		return ResponseEntity.ok().body(category);
 	}
 }
